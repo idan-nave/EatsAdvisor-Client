@@ -40,6 +40,8 @@
 .back-icon{
   font-size: 24px;
   cursor: pointer;
+  background-color: black;
+  border-radius: 100%;
 }
 
 .nav-bar-link:hover {

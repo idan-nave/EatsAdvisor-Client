@@ -34,7 +34,7 @@ const NavBar = () => {
           </li>
           {!isHomePage && (
             <li className="back-btn" onClick={() => navigate(-1)}>
-              <IoChevronBackCircle className="back-icon" />
+              <IoChevronBackCircle color='lightgreen' className="back-icon" />
             </li>
           )}
         </ul>

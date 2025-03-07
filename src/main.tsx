@@ -4,7 +4,7 @@ import '@styles/index.css'
 import { AuthProvider } from '@context'
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-  <AuthProvider>
+  // <AuthProvider>
     <App />
-  </AuthProvider>,
+  // {/* </AuthProvider>, */}
 )

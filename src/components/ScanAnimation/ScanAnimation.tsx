@@ -21,7 +21,7 @@ const ScanAnimation: React.FC = () => {
       formData.append('file', file)
 
       try {
-        const response = await fetch('http://localhost:8080/api/upload', {
+        const response = await fetch('http://localhost:8081/api/upload', {
           method: 'POST',
           body: formData,
         })
@@ -42,9 +42,7 @@ const ScanAnimation: React.FC = () => {
 
     return () => URL.revokeObjectURL(objectUrl)
   }, [file, navigate])
-
-  //if (!file) return <div>No image provided</div>
-
+ 
   return (
     <div className="scan-container">
       {imageSrc && <img src={imageSrc} alt="Scanning" className="scan-image" />}

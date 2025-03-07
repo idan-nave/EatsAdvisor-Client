@@ -1,15 +1,26 @@
 import { createBrowserRouter } from 'react-router'
 import { ROUTES } from '@constants'
 import { ApiDocs, Home, NotFound, UserProfile } from '@pages'
-import { Login, MenuResultsTable, PrivateRoute, ScanAnimation } from '@components'
+import {
+  Login,
+  MenuResultsTable,
+  PrivateRoute,
+  ScanAnimation,
+} from '@components'
 import { BaseLayout } from '@layouts'
+import { AuthProvider } from '@context'
 
 export const router = createBrowserRouter([
   {
     path: ROUTES.BASE,
-    element: <BaseLayout />,
+    element: (
+      <AuthProvider>
+        <BaseLayout />
+      </AuthProvider>
+    ),
     children: [
       { index: true, element: <Home /> },
+      { path: ROUTES.DASHBOARD, element: <Home /> },
       {
         path: ROUTES.API_DOCS,
         element: (
@@ -42,10 +53,10 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
+      { path: ROUTES.LOGIN, element: <Login /> },
     ],
   },
-  { path: ROUTES.LOGIN, element: <Login /> },
-  { path: ROUTES.NOT_FOUND, element: <NotFound /> },
+  { path: ROUTES.CATCH_ALL, element: <NotFound /> },
 ])
 
 export default router

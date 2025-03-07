@@ -37,8 +37,8 @@
 // AuthContext.tsx
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { useNavigate } from 'react-router-dom';
-import api from '../services/api';
 import { User } from '@types';
+import { api } from '@api';
 
 
 interface AuthContextType {
