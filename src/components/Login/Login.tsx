@@ -8,7 +8,7 @@ const Login = () => {
 
   const handleLogin = () => {
     login('User123');
-    navigate(ROUTES.HOME); 
+    navigate(ROUTES.HOME);  
   };
 
   return (
