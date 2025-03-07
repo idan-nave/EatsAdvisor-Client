@@ -1,0 +1,49 @@
+.scan-container {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  max-height: 550px;
+  overflow: hidden;
+  border-radius: 8px;
+  margin-top: 75px;
+  box-shadow: 10px 10px 47px 0px rgba(0, 0, 0, 0.44);
+  border: 1px solid lightgrey;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.scan-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.scan-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 10px;
+  background: lightgreen;
+  opacity: 0.9;
+  box-shadow: 0 0 1px lightcoral, 0 0 1px lightcoral;
+  animation: scanMove 6.5s linear infinite;
+}
+
+@media (max-width: 768px) {
+  .scan-container {
+    max-width: 300px;
+  }
+}
+
+@keyframes scanMove {
+  0% {
+    top: 0;
+    transform: translateY(0);
+  }
+  100% {
+    top: 100%;
+    transform: translateY(-100%);
+  }
+}

@@ -1,7 +1,22 @@
 {
-  "files": [],
-  "references": [
-    { "path": "./tsconfig.app.json" },
-    { "path": "./tsconfig.node.json" }
-  ]
+  "compilerOptions": {
+    "lib": ["dom", "es2015", "es2016", "es2017","es2018"],
+    "jsx": "react-jsx",
+    "esModuleInterop": true,
+    "baseUrl": "./src",
+    "paths": {
+      "@styles/*": ["styles/*"],
+      "@components": ["components"],
+      "@router": ["router"],
+      "@constants": ["constants"],
+      "@hooks": ["hooks"],
+      "@pages": ["pages"],
+      "@api": ["api"],
+      "@context": ["context"],
+      "@layouts": ["layouts"],
+    },
+    "types": ["vite/client"],
+    "module": "esnext",
+    "moduleResolution": "node"
+  }
 }

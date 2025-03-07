@@ -1,0 +1,18 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#root{
+  /* min-height: 100vh;
+  min-width: 100vw; */
+  overflow-x: hidden;
+  background-color: #ffffff;
+  opacity: 1;
+  background-image: radial-gradient(#90ee90 0.8500000000000001px, #ffffff 0.8500000000000001px);
+  background-size: 17px 17px;
+  /* border: 2px solid red; */
+  display: flex;
+  flex-direction: column;
+}

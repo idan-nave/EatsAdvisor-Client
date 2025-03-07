@@ -94,6 +94,8 @@ application-prod.yml
 /dist/
 /nbdist/
 /.nb-gradle/
+json/
+.TODO
 
 # ===========================================
 # 🔹 DOCKER & CI/CD

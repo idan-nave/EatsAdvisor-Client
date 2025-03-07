@@ -1,0 +1,16 @@
+.home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  min-width: 100vw;
+}
+
+.home-content-container {
+  width: 85%;
+  height: 50vh;
+  /* border: 2px solid red; */
+  display: flex;
+  justify-content: center;
+}
