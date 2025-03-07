@@ -4,8 +4,6 @@ import { useAuth } from '@context'
 export default function Login() {
   const { login, user } = useAuth()
 
-  console.log(user)
-
   return user ? (
     <Profile />
   ) : (

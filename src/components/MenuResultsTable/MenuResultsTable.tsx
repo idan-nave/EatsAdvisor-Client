@@ -1,86 +1,89 @@
-import React, { useState, useMemo } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useState, useMemo } from 'react'
+import { useLocation } from 'react-router-dom'
 import {
   useReactTable,
   getCoreRowModel,
   ColumnDef,
   flexRender,
-} from '@tanstack/react-table';
-import './menu-results-table.css';
+} from '@tanstack/react-table'
+import './menu-results-table.css'
 
 type MenuCategory = {
-  green: string[];
-  orange: string[];
-  red: string[];
-};
+  green: string[]
+  orange: string[]
+  red: string[]
+}
 
 type MealRow = {
-  meal: string;
-  green: boolean;
-  orange: boolean;
-  red: boolean;
-};
+  meal: string
+  green: boolean
+  orange: boolean
+  red: boolean
+}
 
 export default function MenuResultsTable() {
-  const location = useLocation();
-  const data: Record<string, MenuCategory> | null = location.state?.data;
+  const location = useLocation()
+  const data: Record<string, MenuCategory> | null = location.state?.data
 
   if (!data) {
-    return <div>No results available</div>;
+    return <div>No results available</div>
   }
 
+  // Helper function to format labels: replaces underscores with spaces.
+  const formatLabel = (label: string): string => label.replace(/_/g, ' ')
+
   // Get all category names and set the initial active tab to the first one.
-  const categoryNames = Object.keys(data);
-  const [activeTab, setActiveTab] = useState<string>(categoryNames[0]);
+  const categoryNames = Object.keys(data)
+  const [activeTab, setActiveTab] = useState<string>(categoryNames[0])
 
   // Helper function to transform a MenuCategory object into meal rows.
   const createMealRows = (obj: MenuCategory): MealRow[] => {
-    const mealMap = new Map<string, MealRow>();
+    const mealMap = new Map<string, MealRow>()
 
     // Process green meals
     obj.green.forEach(meal => {
-      mealMap.set(meal, { meal, green: true, orange: false, red: false });
-    });
+      mealMap.set(meal, { meal, green: true, orange: false, red: false })
+    })
 
     // Process orange meals
     obj.orange.forEach(meal => {
       if (mealMap.has(meal)) {
-        const existing = mealMap.get(meal)!;
-        existing.orange = true;
+        const existing = mealMap.get(meal)!
+        existing.orange = true
       } else {
-        mealMap.set(meal, { meal, green: false, orange: true, red: false });
+        mealMap.set(meal, { meal, green: false, orange: true, red: false })
       }
-    });
+    })
 
     // Process red meals
     obj.red.forEach(meal => {
       if (mealMap.has(meal)) {
-        const existing = mealMap.get(meal)!;
-        existing.red = true;
+        const existing = mealMap.get(meal)!
+        existing.red = true
       } else {
-        mealMap.set(meal, { meal, green: false, orange: false, red: true });
+        mealMap.set(meal, { meal, green: false, orange: false, red: true })
       }
-    });
+    })
 
-    return Array.from(mealMap.values());
-  };
+    return Array.from(mealMap.values())
+  }
 
-  // Memoize the meal rows so that they are re-computed only when activeTab changes.
+  // Memoize the meal rows so they are re-computed only when activeTab changes.
   const rows = useMemo(() => {
-    const activeCategory = data[activeTab];
-    return activeCategory ? createMealRows(activeCategory) : [];
-  }, [activeTab, data]);
+    const activeCategory = data[activeTab]
+    return activeCategory ? createMealRows(activeCategory) : []
+  }, [activeTab, data])
 
   // Define the table columns.
   const columns: ColumnDef<MealRow>[] = [
     {
       accessorKey: 'meal',
       header: 'Meal',
-      cell: info => <span>{info.getValue() as string}</span>,
+      cell: info => <span>{formatLabel(info.getValue() as string)}</span>,
     },
     {
       accessorKey: 'green',
-      header: 'Green',
+      header: ' Favorite',
       cell: info =>
         info.getValue() ? (
           <div
@@ -90,6 +93,7 @@ export default function MenuResultsTable() {
               borderRadius: '50%',
               backgroundColor: '#a5d46a',
               margin: '0 auto',
+              border: '2px solid black',
             }}
           />
         ) : null,
@@ -106,6 +110,7 @@ export default function MenuResultsTable() {
               borderRadius: '50%',
               backgroundColor: '#ffc080',
               margin: '0 auto',
+              border: '2px solid black',
             }}
           />
         ) : null,
@@ -122,30 +127,31 @@ export default function MenuResultsTable() {
               borderRadius: '50%',
               backgroundColor: '#ffa080',
               margin: '0 auto',
+              border: '2px solid black',
             }}
           />
         ) : null,
     },
-  ];
+  ]
 
   // Create the table using the meal rows and columns.
   const table = useReactTable({
     data: rows,
     columns,
     getCoreRowModel: getCoreRowModel(),
-  });
+  })
 
   return (
     <div className="menu-results-container">
       {/* Tabs Navigation */}
       <div className="tabs-navigation">
-        {categoryNames.map((name) => (
+        {categoryNames.map(name => (
           <button
             key={name}
             className={`tab-button ${activeTab === name ? 'active' : ''}`}
             onClick={() => setActiveTab(name)}
           >
-            {name}
+            {formatLabel(name)}
           </button>
         ))}
       </div>
@@ -153,28 +159,33 @@ export default function MenuResultsTable() {
       {/* Tab Content */}
       <div className="tab-content">
         <div className="menu-table-section">
-          <h2>{activeTab}</h2>
           <div className="table-responsive">
             <table>
               <thead>
-                {table.getHeaderGroups().map((headerGroup) => (
+                {table.getHeaderGroups().map(headerGroup => (
                   <tr key={headerGroup.id}>
-                    {headerGroup.headers.map((header) => (
+                    {headerGroup.headers.map(header => (
                       <th key={header.id}>
                         {header.isPlaceholder
                           ? null
-                          : flexRender(header.column.columnDef.header, header.getContext())}
+                          : flexRender(
+                              header.column.columnDef.header,
+                              header.getContext(),
+                            )}
                       </th>
                     ))}
                   </tr>
                 ))}
               </thead>
               <tbody>
-                {table.getRowModel().rows.map((row) => (
+                {table.getRowModel().rows.map(row => (
                   <tr key={row.id}>
-                    {row.getVisibleCells().map((cell) => (
+                    {row.getVisibleCells().map(cell => (
                       <td key={cell.id}>
-                        {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                        {flexRender(
+                          cell.column.columnDef.cell,
+                          cell.getContext(),
+                        )}
                       </td>
                     ))}
                   </tr>
@@ -185,5 +196,5 @@ export default function MenuResultsTable() {
         </div>
       </div>
     </div>
-  );
+  )
 }
