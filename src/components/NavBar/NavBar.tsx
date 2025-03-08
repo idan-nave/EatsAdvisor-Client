@@ -25,7 +25,7 @@ const NavBar = () => {
       {!isOpen && (
         <nav className="nav-bar">
           <div className="logo-container" onClick={() => navigate(ROUTES.BASE)}>
-            <span className="first-letter">M</span>ENU
+            <span className="first-letter">E</span>ats<span className="first-letter">A</span>dvisor
           </div>
           <div className="nav-links-container">
             <div className="menu-icon" onClick={() => setIsOpen(true)}>
@@ -103,7 +103,7 @@ const NavBar = () => {
               className="logo-container"
               onClick={() => navigate(ROUTES.BASE)}
             >
-              <span className="first-letter">M</span>ENU
+              <span className="first-letter">E</span>ats<span className="first-letter">A</span>dvisor
             </div>
             <div className="menu-close-icon" onClick={() => setIsOpen(false)}>
               <FiX style={{ color: 'lightgreen' }} />
