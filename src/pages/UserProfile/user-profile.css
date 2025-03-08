@@ -15,26 +15,42 @@
   border: 1px solid lightgrey;
   border-radius: 14px;
   padding: 20px;
+
+  .error-message{
+    color: #FF6961;
+    border: 1px solid #FF6961;
+    margin-top: 20px;
+    width: 80%;
+    padding: 8px;
+    border-radius: 10px;
+  }
+
+  .user-profile-form-step-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 8px;
+  }
+
+  .step-0{
+    .user-profile-step-headers {
+      width: 80%;
+      margin-bottom: 10px;
+   
+    }
+  }
+
+  .form-step-btn {
+    border: 2px solid transparent;
+    width: 200px;
+    height: 45px;
+    margin-top: 20px;
+    border-radius: 2rem;
+    color: black;
+    background-color: lightgreen;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+  }
 }
-
-.user-profile-step-headers {
-  margin-bottom: 20px;
-}
-
-
-
-.form-step-btn {
-  border: 2px solid transparent;
-  width: 200px;
-  height: 45px;
-  margin-top: 20px;
-  border-radius: 2rem;
-  color: black;
-  background-color: lightgreen;
-  font-size: 14px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.allergy-buttons-container {
- }

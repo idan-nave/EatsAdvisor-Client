@@ -1,0 +1,47 @@
+.step-3{
+  width: 80%;
+  .user-profile-step-headers {
+    margin-bottom: 20px;
+  }
+
+  .flavor-ratings-selects-container{
+    width: 80%;
+    padding: 8px;
+
+    .flavor-ratings-select-container{
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      border: 2px solid blue;
+      margin-bottom: 10px;
+      padding: 8px;
+      border: 1px solid lightgray;
+      border-radius: 14px;
+
+      .flavor-rating-select{
+        background: transparent;
+        height: 20px;
+        border-radius: 4px;
+      }
+    }
+  }
+
+  .flavor-ratings-nav-btn-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+
+    .flavor-rating-btn {
+      width: 49%;
+      max-width: 150px;
+      height: 35px;
+      background: transparent;
+      border-radius: 14px;
+      border: 1px solid lightgrey;
+      cursor: pointer;
+    }
+  }
+
+}

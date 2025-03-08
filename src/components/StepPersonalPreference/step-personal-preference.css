@@ -1,0 +1,33 @@
+.step-5 {
+  width: 80%;
+  .user-profile-step-headers {
+    margin-bottom: 20px;
+  }
+
+  #personalPreference {
+    width: 80%;
+    height: 110px;
+    margin-top: 20px;
+    border: 1px solid lightgray;
+    background: transparent;
+    border-radius: 10px;
+  }
+
+  .personal-preference-nav-btns-container {
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+
+    .personal-preference-nav-btn {
+      width: 49%;
+      max-width: 150px;
+      height: 35px;
+      background: transparent;
+      border-radius: 14px;
+      border: 1px solid lightgrey;
+      cursor: pointer;
+    }
+  }
+}

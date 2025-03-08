@@ -1,0 +1,78 @@
+.step-4 {
+  width: 80%;
+  .user-profile-step-headers {
+    margin-bottom: 20px;
+  }
+
+  .add-dish-container {
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+
+    .add-dish-input {
+      width: 75%;
+    }
+
+    .add-dish-btn {
+      width: 22%;
+      height: 35px;
+      border: 1px solid lightgray;
+      border-radius: 10px;
+    }
+
+    .add-dish-input {
+      background: transparent;
+      border: 1px solid lightgray;
+      border-radius: 10px;
+    }
+  }
+
+  .dishes-list {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 15px;
+
+    .dish-item {
+      padding: 4px;
+      border: 1px solid lightgray;
+      border-radius: 10px;
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      margin-top: 10px;
+
+      .dish-name {
+        width: 100px;
+      }
+
+      .dish-item-btn {
+        width: 100px;
+        height: 35px;
+        border: 1px solid lightgray;
+        border-radius: 10px;
+      }
+    }
+  }
+
+  .specific-dishes-nav-btns-container {
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+
+    .specific-dishes-btn {
+      width: 49%;
+      max-width: 150px;
+      height: 35px;
+      background: transparent;
+      border-radius: 14px;
+      border: 1px solid lightgrey;
+      cursor: pointer;
+    }
+  }
+}

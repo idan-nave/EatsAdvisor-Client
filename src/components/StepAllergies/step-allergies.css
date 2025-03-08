@@ -1,0 +1,102 @@
+
+.step-1 {
+  .user-profile-step-headers {
+    margin-bottom: 20px;
+    width: 80%;
+  }
+
+  .allergy-search-container {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+
+    #allergy-input {
+      border: 2px solid lightgray;
+      width: 75%;
+      height: 40px;
+      border-radius: 14px;
+      background: transparent;
+    }
+
+    .add-allergy-btn {
+      border: 2px solid lightgray;
+      width: 20%;
+      height: 40px;
+      border-radius: 14px;
+      background: transparent;
+      cursor: pointer;
+    }
+  }
+
+  .allergy-suggestion-container {
+    width: 80%;
+    z-index: 1;
+    border: 1px solid lightgray;
+    margin-top: 20px;
+    border-radius: 8px ;
+
+
+    .allergy-suggestion {
+      padding: 4px;
+      border-bottom: 1px solid lightgray;
+    }
+  }
+
+  .allergys-fields-container {
+    width: 80%;
+    margin-top: 20px;
+    border: 1px solid lightgray;
+    padding: 8px;
+    border-radius: 8px;
+
+    .allergys-fields-list {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-direction: column;
+
+      .allergys-couple{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        width: 100%;
+        margin-top: 10px;
+
+        .allergy-btn{
+          background: transparent;
+          width: 100px;
+          height: 30px;
+          border-radius: 14px;
+          border: 2px solid lightgray;
+          cursor: pointer;
+        }
+
+        .allergy-field{
+          width: 100px;
+          text-align: center;
+        }
+
+      }
+
+
+    }
+  }
+
+  .allergy-buttons-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+
+    .allergy-btn {
+      width: 49%;
+      max-width: 150px;
+      height: 35px;
+      background: transparent;
+      border-radius: 14px;
+      border: 1px solid lightgrey;
+      cursor: pointer;
+    }
+  }
+}

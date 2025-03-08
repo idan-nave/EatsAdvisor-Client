@@ -1,0 +1,67 @@
+.step-2 {
+
+  /* border: 2px solid red; */
+  width: 80%;
+  .user-profile-step-headers {
+    margin-bottom: 10px;
+    width: 80%;
+  }
+
+  .restrictions-nav-btns {
+    margin-top: 20px;
+    .allergy-buttons-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 80%;
+
+      .restriction-btn {
+        width: 49%;
+        max-width: 150px;
+        height: 35px;
+        background: transparent;
+        border-radius: 14px;
+        border: 1px solid lightgrey;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .restrictions-container {
+    /* border: 2px solid red; */
+    width: 150px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: left;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+
+    input[type='checkbox'] {
+      accent-color: lightgray;
+      width: 15px;
+      height: 15px;
+      margin-right: 10px;
+      cursor: pointer;
+    }
+  }
+
+  .restrictions-nav-btns {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    /* border: 2px solid red; */
+
+    .restriction-btn {
+      width: 49%;
+      max-width: 150px;
+      height: 35px;
+      background: transparent;
+      border-radius: 14px;
+      border: 1px solid lightgrey;
+      cursor: pointer;
+    }
+  }
+}
