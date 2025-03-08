@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { ROUTES } from '@constants'
+import { uploadMenu } from '../../api/api'
 import './ScanAnimation.css'
 
 const ScanAnimation: React.FC = () => {
@@ -17,24 +18,15 @@ const ScanAnimation: React.FC = () => {
     setImageSrc(objectUrl)
 
     const uploadFile = async () => {
-      const formData = new FormData()
-      formData.append('file', file)
-
       try {
-        const response = await fetch('http://localhost:8081/api/upload', {
-          method: 'POST',
-          body: formData,
-        })
-
-        const data = await response.json()
-
-        if (!response.ok) throw new Error(data.error)
-          
+        // Use the uploadMenu function from api.ts
+        const data = await uploadMenu(file)
+        
         console.log(data)
 
         setTimeout(() => navigate(ROUTES.MENU_TABLE, { state: { data } }), 2000)
       } catch (err) {
-        setError(err.message)
+        setError(err.message || 'Failed to upload menu')
       }
     }
 
