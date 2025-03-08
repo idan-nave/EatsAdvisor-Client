@@ -1,37 +1,31 @@
-import { useState } from 'react';
-import { useAuth } from '@context';
-import { useNavigate } from 'react-router';
-import './image-uploader.css';
+import { useState } from 'react'
+import { useAuth } from '@context'
+import { useNavigate } from 'react-router'
+import { ROUTES } from '@constants'
+import './image-uploader.css'
 
 export default function ImageUploader() {
-  const { user } = useAuth();
-  const navigate = useNavigate();
-  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const { user } = useAuth()
+  const navigate = useNavigate()
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (!user) {
-      return;
+      return
     }
 
     if (event.target.files && event.target.files.length > 0) {
-      const file = event.target.files[0];
+      const file = event.target.files[0]
 
-      if (!file.type.startsWith('image/')) {
-        setErrorMessage('Please select a valid image file (e.g., JPG, PNG).');
-        return;
-      }
-
-      setErrorMessage(null);
-      navigate('/scan', { state: { file } }); // Pass the file to ScanAnimation
+      navigate(ROUTES.MENU_SCAN, { state: { file, allowed: true } })
     }
-  };
+  }
 
   const handleButtonClick = (event: React.MouseEvent<HTMLLabelElement>) => {
     if (!user) {
-      event.preventDefault();
-      navigate('/login');
+      event.preventDefault()
+      navigate(ROUTES.LOGIN)
     }
-  };
+  }
 
   return (
     <div className="image-uploader-container">
@@ -51,8 +45,6 @@ export default function ImageUploader() {
           disabled={!user}
         />
       </label>
-
-      {errorMessage && <div className="upload-status error">{errorMessage}</div>}
     </div>
-  );
+  )
 }

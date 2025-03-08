@@ -9,7 +9,8 @@
     "serve": "vite preview",
     "lint": "eslint --fix src",
     "format": "prettier --write .",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "component": "node createComponent.js"
   },
   "dependencies": {
     "@react-aria/utils": "^3.28.0",

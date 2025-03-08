@@ -26,15 +26,15 @@ const ScanAnimation: React.FC = () => {
           body: formData,
         })
 
-        if (!response.ok) throw new Error('Upload failed')
-
         const data = await response.json()
+
+        if (!response.ok) throw new Error(data.error)
+          
         console.log(data)
 
-        setTimeout(() => navigate(ROUTES.RESULTS, { state: { data } }), 2000)
-
+        setTimeout(() => navigate(ROUTES.MENU_TABLE, { state: { data } }), 2000)
       } catch (err) {
-        setError('Upload failed. Please try again.')
+        setError(err.message)
       }
     }
 
@@ -42,12 +42,26 @@ const ScanAnimation: React.FC = () => {
 
     return () => URL.revokeObjectURL(objectUrl)
   }, [file, navigate])
- 
+
   return (
     <div className="scan-container">
-      {imageSrc && <img src={imageSrc} alt="Scanning" className="scan-image" />}
-      <div className="scan-line"></div>
-      {error && <div className="upload-status error">{error}</div>}
+      {!error && imageSrc && (
+        <img src={imageSrc} alt="Scanning" className="scan-image" />
+      )}
+      {!error && <div className="scan-line"></div>}
+      {error && (
+        <div className="upload-status error">
+          {error}
+          <div
+            className="go-back-home"
+            onClick={() => {
+              navigate(ROUTES.HOME)
+            }}
+          >
+            Try again
+          </div>
+        </div>
+      )}
     </div>
   )
 }

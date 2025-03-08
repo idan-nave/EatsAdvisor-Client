@@ -1,0 +1,40 @@
+.user-profile-form {
+  height: 100%;
+  width: 95%;
+  max-width: 440px;
+  font-weight: bolder;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 10%;
+  -webkit-box-shadow: 5px 5px 5px 0px rgba(207, 207, 207, 1);
+  -moz-box-shadow: 5px 5px 5px 0px rgba(207, 207, 207, 1);
+  box-shadow: 5px 5px 5px 0px rgba(207, 207, 207, 1);
+  border: 1px solid lightgrey;
+  border-radius: 14px;
+  padding: 20px;
+}
+
+.user-profile-step-headers {
+  margin-bottom: 20px;
+}
+
+
+
+.form-step-btn {
+  border: 2px solid transparent;
+  width: 200px;
+  height: 45px;
+  margin-top: 20px;
+  border-radius: 2rem;
+  color: black;
+  background-color: lightgreen;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.allergy-buttons-container {
+ }

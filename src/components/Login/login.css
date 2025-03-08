@@ -1,0 +1,42 @@
+.login-container {
+  height: 100%;
+  width: 95%;
+  max-width: 440px;
+  font-size: 2rem;
+  font-weight: bolder;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 10%;
+  -webkit-box-shadow: 5px 5px 5px 0px rgba(207, 207, 207, 1);
+  -moz-box-shadow: 5px 5px 5px 0px rgba(207, 207, 207, 1);
+  box-shadow: 5px 5px 5px 0px rgba(207, 207, 207, 1);
+  border: 1px solid lightgrey;
+  border-radius: 14px;
+  padding: 20px;
+
+  .sign-in-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 200px;
+    border-radius: 2rem;
+    padding: 4px;
+    border: 1px solid lightgray;
+    cursor: pointer;
+    .sign-in-btn {
+      background: transparent;
+      height: 35px;
+      width: 150px;
+      border: 1px solid transparent;
+      cursor: pointer;
+    }
+  }
+
+  .sign-in-container:hover {
+    transform: scale(1.01);
+    cursor: pointer;
+  }
+}

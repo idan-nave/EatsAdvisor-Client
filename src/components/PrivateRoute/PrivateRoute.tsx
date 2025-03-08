@@ -1,14 +1,20 @@
-import { Navigate } from 'react-router-dom';
-import { JSX } from 'react';
-import { useAuth } from '@context';
+import { Navigate, useLocation } from 'react-router-dom'
+import { useAuth } from '@context'
+import { JSX } from 'react'
 
 interface PrivateRouteProps {
-  children: JSX.Element;
+  children: JSX.Element
 }
 
-const PrivateRoute = ({ children }: PrivateRouteProps) => {
-  const { user } = useAuth();
-  return user ? children : <Navigate to="/login" replace />;
-};
+const PrivateRoute: React.FC<PrivateRouteProps> = ({ children }) => {
+  const { user } = useAuth()
+  const location = useLocation()
 
-export default PrivateRoute;
+  if (location.pathname === '/scan' && location.state?.allowed !== true) {
+    return <Navigate to="/" replace />
+  }
+
+  return user ? children : <Navigate to="/login" replace />
+}
+
+export default PrivateRoute

@@ -1,6 +1,6 @@
 import { createBrowserRouter } from 'react-router'
 import { ROUTES } from '@constants'
-import { ApiDocs, Home, NotFound, UserProfile } from '@pages'
+import { About, ApiDocs, ErrorPage, Home, NotFound, UserProfile } from '@pages'
 import {
   Login,
   MenuResultsTable,
@@ -18,9 +18,11 @@ export const router = createBrowserRouter([
         <BaseLayout />
       </AuthProvider>
     ),
+    errorElement: <ErrorPage />,
     children: [
       { index: true, element: <Home /> },
       { path: ROUTES.DASHBOARD, element: <Home /> },
+      { path: ROUTES.ABOUT, element: <About /> },
       {
         path: ROUTES.API_DOCS,
         element: (
@@ -46,7 +48,7 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: ROUTES.RESULTS,
+        path: ROUTES.MENU_TABLE,
         element: (
           <PrivateRoute>
             <MenuResultsTable />

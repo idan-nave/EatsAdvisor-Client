@@ -10,7 +10,7 @@ const ROUTES = {
   ABOUT: '/about',
   CATCH_ALL: '*',
   MENU_SCAN: '/scan',
-  RESULTS: '/results',
+  MENU_TABLE: '/menu-table',
 }
 
 export default ROUTES

@@ -29,23 +29,18 @@ export default function MenuResultsTable() {
     return <div>No results available</div>
   }
 
-  // Helper function to format labels: replaces underscores with spaces.
   const formatLabel = (label: string): string => label.replace(/_/g, ' ')
 
-  // Get all category names and set the initial active tab to the first one.
   const categoryNames = Object.keys(data)
   const [activeTab, setActiveTab] = useState<string>(categoryNames[0])
 
-  // Helper function to transform a MenuCategory object into meal rows.
   const createMealRows = (obj: MenuCategory): MealRow[] => {
     const mealMap = new Map<string, MealRow>()
 
-    // Process green meals
     obj.green.forEach(meal => {
       mealMap.set(meal, { meal, green: true, orange: false, red: false })
     })
 
-    // Process orange meals
     obj.orange.forEach(meal => {
       if (mealMap.has(meal)) {
         const existing = mealMap.get(meal)!
@@ -55,7 +50,6 @@ export default function MenuResultsTable() {
       }
     })
 
-    // Process red meals
     obj.red.forEach(meal => {
       if (mealMap.has(meal)) {
         const existing = mealMap.get(meal)!
@@ -68,13 +62,11 @@ export default function MenuResultsTable() {
     return Array.from(mealMap.values())
   }
 
-  // Memoize the meal rows so they are re-computed only when activeTab changes.
   const rows = useMemo(() => {
     const activeCategory = data[activeTab]
     return activeCategory ? createMealRows(activeCategory) : []
   }, [activeTab, data])
 
-  // Define the table columns.
   const columns: ColumnDef<MealRow>[] = [
     {
       accessorKey: 'meal',
@@ -134,7 +126,6 @@ export default function MenuResultsTable() {
     },
   ]
 
-  // Create the table using the meal rows and columns.
   const table = useReactTable({
     data: rows,
     columns,

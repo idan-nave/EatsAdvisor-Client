@@ -1,24 +1,30 @@
-import { useState } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { FiMenu, FiX } from 'react-icons/fi';
-import { IoChevronBackCircle } from "react-icons/io5";
-import './nav-bar.css';
+import { useState } from 'react'
+import { NavLink, useNavigate } from 'react-router-dom'
+import { FiMenu, FiX } from 'react-icons/fi'
+import { TfiArrowCircleLeft } from 'react-icons/tfi'
+import './nav-bar.css'
+import { ROUTES } from '@constants'
+import { useAuth } from '@context'
+import { FaUserCircle } from 'react-icons/fa'
 
 const NavBar = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const location = useLocation();
-  const navigate = useNavigate();
-  const isHomePage = location.pathname === '/';
+  const [isOpen, setIsOpen] = useState(false)
+  const { user } = useAuth()
+  const navigate = useNavigate()
 
   const handleLinkClick = () => {
-    setIsOpen(false);
-  };
+    setIsOpen(false)
+  }
+
+  const handelBackClick = () => {
+    navigate(-1)
+  }
 
   return (
     <>
       {!isOpen && (
         <nav className="nav-bar">
-          <div className="logo-container">
+          <div className="logo-container" onClick={() => navigate(ROUTES.BASE)}>
             <span className="first-letter">M</span>ENU
           </div>
           <div className="nav-links-container">
@@ -26,20 +32,65 @@ const NavBar = () => {
               <FiMenu style={{ color: 'lightgreen' }} />
             </div>
             <ul className="nav-links">
-              <li>
-                <Link to="/api" className="nav-bar-link">API</Link>
+              <li className="nav-link">
+                <NavLink
+                  to={ROUTES.HOME}
+                  className={({ isActive }) =>
+                    isActive ? 'nav-bar-link active' : 'nav-bar-link'
+                  }
+                  onClick={handleLinkClick}
+                >
+                  Home
+                </NavLink>
               </li>
-              <li>
-                <Link to="/about" className="nav-bar-link">About</Link>
+              <li className="nav-link">
+                <NavLink
+                  to={ROUTES.ABOUT}
+                  className={({ isActive }) =>
+                    isActive ? 'nav-bar-link active' : 'nav-bar-link'
+                  }
+                >
+                  About
+                </NavLink>
               </li>
-              <li>
-                <Link to="/login" className="nav-bar-link">Login</Link>
+              <li className="nav-link">
+                <NavLink
+                  to={ROUTES.API_DOCS}
+                  className={({ isActive }) =>
+                    isActive ? 'nav-bar-link active' : 'nav-bar-link'
+                  }
+                >
+                  API
+                </NavLink>
               </li>
-              {!isHomePage && (
-                <li className="back-btn" onClick={() => navigate(-1)}>
-                  <IoChevronBackCircle color='lightgreen' className="back-icon" />
-                </li>
-              )}
+              <li className="nav-link">
+                {user ? (
+                  <FaUserCircle
+                    className="user-icon"
+                    color="black"
+                    size={28}
+                    onClick={() => navigate(ROUTES.PROFILE)}
+                  />
+                ) : (
+                  <NavLink
+                    to={ROUTES.LOGIN}
+                    className={({ isActive }) =>
+                      isActive ? 'nav-bar-link active' : 'nav-bar-link'
+                    }
+                    onClick={handleLinkClick}
+                  >
+                    Login
+                  </NavLink>
+                )}
+              </li>
+
+              <li className="back-btn" onClick={handelBackClick}>
+                <TfiArrowCircleLeft
+                  size={30}
+                  color="black"
+                  className="back-icon"
+                />
+              </li>
             </ul>
           </div>
         </nav>
@@ -48,7 +99,10 @@ const NavBar = () => {
       {isOpen && (
         <div className="menu-overlay">
           <div className="overlay-header">
-            <div className="logo-container">
+            <div
+              className="logo-container"
+              onClick={() => navigate(ROUTES.BASE)}
+            >
               <span className="first-letter">M</span>ENU
             </div>
             <div className="menu-close-icon" onClick={() => setIsOpen(false)}>
@@ -56,20 +110,67 @@ const NavBar = () => {
             </div>
           </div>
           <ul className="overlay-links">
-            <li>
-              <Link to="/api" className="nav-bar-link" onClick={handleLinkClick}>API</Link>
+            <li className="nav-link">
+              <NavLink
+                to={ROUTES.API_DOCS}
+                className={({ isActive }) =>
+                  isActive ? 'nav-bar-link active' : 'nav-bar-link'
+                }
+                onClick={handleLinkClick}
+              >
+                API
+              </NavLink>
             </li>
-            <li>
-              <Link to="/about" className="nav-bar-link" onClick={handleLinkClick}>About</Link>
+            <li className="nav-link">
+              <NavLink
+                to={ROUTES.ABOUT}
+                className={({ isActive }) =>
+                  isActive ? 'nav-bar-link active' : 'nav-bar-link'
+                }
+                onClick={handleLinkClick}
+              >
+                About
+              </NavLink>
             </li>
-            <li>
-              <Link to="/login" className="nav-bar-link" onClick={handleLinkClick}>Login</Link>
+            <li className="nav-link">
+              <NavLink
+                to={ROUTES.HOME}
+                className={({ isActive }) =>
+                  isActive ? 'nav-bar-link active' : 'nav-bar-link'
+                }
+                onClick={handleLinkClick}
+              >
+                Home
+              </NavLink>
+            </li>
+            <li className="nav-link">
+              {user ? (
+                <FaUserCircle
+                  className="user-icon"
+                  color="black"
+                  size={25}
+                  onClick={() => {
+                    navigate(ROUTES.PROFILE)
+                    setIsOpen(false)
+                  }}
+                />
+              ) : (
+                <NavLink
+                  to={ROUTES.LOGIN}
+                  className={({ isActive }) =>
+                    isActive ? 'nav-bar-link active' : 'nav-bar-link'
+                  }
+                  onClick={handleLinkClick}
+                >
+                  Login
+                </NavLink>
+              )}
             </li>
           </ul>
         </div>
       )}
     </>
-  );
-};
+  )
+}
 
-export default NavBar;
+export default NavBar
