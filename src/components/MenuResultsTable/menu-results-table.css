@@ -20,6 +20,7 @@
     font-size: 16px;
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
+    color: black;
   }
   
   .tab-button:hover {
@@ -73,6 +74,7 @@
   @media (max-width: 768px) {
     .tabs-navigation {
       flex-direction: column;
+      color: black;
     }
   
     .tab-button {
@@ -81,10 +83,12 @@
       font-size: 14px;
       padding: 12px;
       border-bottom: 1px solid #ddd;
+      color: black;
     }
   
     .tab-button.active {
       border-bottom: none;
+      color: black;
     }
   
     th,
