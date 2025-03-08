@@ -1,7 +1,7 @@
 .image-uploader-container {
   height: 100%;
   width: 100%;
-  max-width: 440px;
+  max-width: 500px;
   font-size: 2rem;
   font-weight: bolder;
   text-align: center;
@@ -9,13 +9,35 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  gap: 10%;
-  -webkit-box-shadow: 5px 5px 5px 0px rgba(207, 207, 207, 1);
-  -moz-box-shadow: 5px 5px 5px 0px rgba(207, 207, 207, 1);
-  box-shadow: 5px 5px 5px 0px rgba(207, 207, 207, 1);
-  border: 1px solid lightgrey;
+  gap: 30px;
+  -webkit-box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border: 1px solid #e0e0e0;
   border-radius: 14px;
-  padding: 20px;
+  padding: 30px;
+  background-color: #ffffff;
+  margin-top: 80px; /* Add margin to prevent header overlap */
+}
+
+.welcome-message {
+  width: 100%;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e0e0e0;
+  margin-bottom: 10px;
+}
+
+.welcome-message h2 {
+  color: #2e7d32;
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+.welcome-message p {
+  color: #555;
+  font-size: 1.1rem;
+  font-weight: normal;
+}
 
   .upload-button {
     width: 250px;
@@ -41,6 +63,6 @@
   }
 
   .green-ai-text {
-    color: lightgreen;
+    color: #2e7d32;
+    font-weight: bold;
   }
-}

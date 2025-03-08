@@ -5,6 +5,7 @@ const ROUTES = {
   LOGIN: '/login',
   REGISTER: '/register',
   PROFILE: '/profile',
+  PREFERENCES: '/preferences',
   NOT_FOUND: '/404',
   API_DOCS: '/api',
   ABOUT: '/about',

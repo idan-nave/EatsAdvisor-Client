@@ -5,11 +5,11 @@ import { TfiArrowCircleLeft } from 'react-icons/tfi'
 import './nav-bar.css'
 import { ROUTES } from '@constants'
 import { useAuth } from '@context'
-import { FaUserCircle } from 'react-icons/fa'
+import { FaUserCircle, FaSignOutAlt } from 'react-icons/fa'
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false)
-  const { user } = useAuth()
+  const { user, logout } = useAuth()
   const navigate = useNavigate()
 
   const handleLinkClick = () => {
@@ -29,7 +29,7 @@ const NavBar = () => {
           </div>
           <div className="nav-links-container">
             <div className="menu-icon" onClick={() => setIsOpen(true)}>
-              <FiMenu style={{ color: 'lightgreen' }} />
+              <FiMenu style={{ color: '#2e7d32' }} />
             </div>
             <ul className="nav-links">
               <li className="nav-link">
@@ -65,12 +65,31 @@ const NavBar = () => {
               </li>
               <li className="nav-link">
                 {user ? (
-                  <FaUserCircle
-                    className="user-icon"
-                    color="black"
-                    size={28}
-                    onClick={() => navigate(ROUTES.PROFILE)}
-                  />
+                  <div className="user-actions">
+                    <FaUserCircle
+                      className="user-icon"
+                      color="black"
+                      size={28}
+                      onClick={() => navigate(ROUTES.PROFILE)}
+                      title="Profile"
+                    />
+                    <NavLink
+                      to={ROUTES.PREFERENCES}
+                      className={({ isActive }) =>
+                        isActive ? 'nav-bar-link active' : 'nav-bar-link'
+                      }
+                      onClick={handleLinkClick}
+                    >
+                      Preferences
+                    </NavLink>
+                    <FaSignOutAlt
+                      className="logout-icon"
+                      color="#d32f2f"
+                      size={24}
+                      onClick={logout}
+                      title="Logout"
+                    />
+                  </div>
                 ) : (
                   <NavLink
                     to={ROUTES.LOGIN}
@@ -106,7 +125,7 @@ const NavBar = () => {
               <span className="first-letter">E</span>ats<span className="first-letter">A</span>dvisor
             </div>
             <div className="menu-close-icon" onClick={() => setIsOpen(false)}>
-              <FiX style={{ color: 'lightgreen' }} />
+              <FiX style={{ color: '#2e7d32' }} />
             </div>
           </div>
           <ul className="overlay-links">
@@ -145,15 +164,36 @@ const NavBar = () => {
             </li>
             <li className="nav-link">
               {user ? (
-                <FaUserCircle
-                  className="user-icon"
-                  color="black"
-                  size={25}
-                  onClick={() => {
+                <div className="mobile-user-actions">
+                  <div className="mobile-user-action" onClick={() => {
                     navigate(ROUTES.PROFILE)
                     setIsOpen(false)
-                  }}
-                />
+                  }}>
+                    <FaUserCircle
+                      className="user-icon"
+                      color="black"
+                      size={25}
+                    />
+                    <span>Profile</span>
+                  </div>
+                  <div className="mobile-user-action" onClick={() => {
+                    navigate(ROUTES.PREFERENCES)
+                    setIsOpen(false)
+                  }}>
+                    <span>Preferences</span>
+                  </div>
+                  <div className="mobile-user-action" onClick={() => {
+                    logout()
+                    setIsOpen(false)
+                  }}>
+                    <FaSignOutAlt
+                      className="logout-icon"
+                      color="#d32f2f"
+                      size={25}
+                    />
+                    <span>Logout</span>
+                  </div>
+                </div>
               ) : (
                 <NavLink
                   to={ROUTES.LOGIN}

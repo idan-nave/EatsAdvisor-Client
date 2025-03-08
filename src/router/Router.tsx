@@ -1,6 +1,6 @@
 import { createBrowserRouter } from 'react-router'
 import { ROUTES } from '@constants'
-import { About, ApiDocs, ErrorPage, Home, NotFound, UserProfile } from '@pages'
+import { About, ApiDocs, ErrorPage, Home, NotFound, UserProfile, Preferences } from '@pages'
 import {
   Login,
   MenuResultsTable,
@@ -52,6 +52,14 @@ export const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <MenuResultsTable />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: ROUTES.PREFERENCES,
+        element: (
+          <PrivateRoute>
+            <Preferences />
           </PrivateRoute>
         ),
       },

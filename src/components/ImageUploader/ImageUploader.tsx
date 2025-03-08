@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { useAuth } from '@context'
 import { useNavigate } from 'react-router'
 import { ROUTES } from '@constants'
@@ -29,6 +28,13 @@ export default function ImageUploader() {
 
   return (
     <div className="image-uploader-container">
+      {user && (
+        <div className="welcome-message">
+          <h2>Welcome, {user.firstName || 'User'}!</h2>
+          <p>Ready to discover personalized menu recommendations?</p>
+        </div>
+      )}
+      
       <div>
         <div>Upload a menu image to receive personalized</div>
         <span className="green-ai-text">AI-powered</span> recommendations
