@@ -29,8 +29,8 @@
   cursor: pointer;
   padding: 5px 10px;
   border-radius: 5px;
-  background-color: #f8f8f8;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  background-color: transparent;
+  /* box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); */
 }
 
 .first-letter {
@@ -51,6 +51,12 @@
 .back-btn {
   cursor: pointer;
   margin: 0 5px;
+}
+
+.user-icon :hover,
+.logout-icon:hover,
+.back-icon:hover {
+  color: #2e7d32;
 }
 
 .logout-icon:hover,
@@ -98,7 +104,7 @@
   font-size: 18px;
 }
 
-.active{
+.active {
   color: #2e7d32;
   font-weight: bold;
 }
@@ -113,16 +119,14 @@
   cursor: pointer;
 }
 
-
 @media screen and (max-width: 768px) {
   .menu-icon {
     display: block;
   }
   .nav-links {
-    display: none; 
+    display: none;
   }
 }
-
 
 .menu-overlay {
   position: fixed;
@@ -131,7 +135,7 @@
   width: 100%;
   height: 100%;
   background: rgba(255, 255, 255, 0.95);
-  z-index: 999; 
+  z-index: 999;
   display: flex;
   flex-direction: column;
   padding: 20px;

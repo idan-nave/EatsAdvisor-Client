@@ -1,6 +1,14 @@
 import { createBrowserRouter } from 'react-router'
 import { ROUTES } from '@constants'
-import { About, ApiDocs, ErrorPage, Home, NotFound, UserProfile, Preferences } from '@pages'
+import {
+  About,
+  ApiDocs,
+  ErrorPage,
+  Home,
+  NotFound,
+  UserProfile,
+  Preferences,
+} from '@pages'
 import {
   Login,
   MenuResultsTable,
@@ -8,15 +16,17 @@ import {
   ScanAnimation,
 } from '@components'
 import { BaseLayout } from '@layouts'
-import { AuthProvider } from '@context'
+import { AuthProvider, UserProfileProvider } from '@context'
 
 export const router = createBrowserRouter([
   {
     path: ROUTES.BASE,
     element: (
-      <AuthProvider>
-        <BaseLayout />
-      </AuthProvider>
+      <UserProfileProvider>
+        <AuthProvider>
+          <BaseLayout />
+        </AuthProvider>
+      </UserProfileProvider>
     ),
     errorElement: <ErrorPage />,
     children: [
@@ -55,18 +65,18 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
-      {
-        path: ROUTES.PREFERENCES,
-        element: (
-          <PrivateRoute>
-            <Preferences />
-          </PrivateRoute>
-        ),
-      },
+      // {
+      //   path: ROUTES.PREFERENCES,
+      //   element: (
+      //     <PrivateRoute>
+      //       <Preferences />
+      //     </PrivateRoute>
+      //   ),
+      // },
       { path: ROUTES.LOGIN, element: <Login /> },
+      { path: ROUTES.CATCH_ALL, element: <NotFound /> },
     ],
   },
-  { path: ROUTES.CATCH_ALL, element: <NotFound /> },
 ])
 
 export default router

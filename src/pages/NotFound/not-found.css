@@ -1,0 +1,57 @@
+.not-found-page-container {
+  /* border: 2px solid red; */
+  min-height: 100vh;
+  min-width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.not-found-content {
+  width: 80%;
+  max-width: 500px;
+  font-size: 1.9rem;
+  font-weight: bold;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  -webkit-box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border: 1px solid #e0e0e0;
+  border-radius: 14px;
+  padding: 30px;
+
+  .not-found-message {
+    width: 90%;
+    /* border: 2px solid red; */
+  }
+
+  .btn-404 {
+    width: 220px;
+    height: 55px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    background-color: transparent;
+    border-radius: 14px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-size: 1rem;
+    box-shadow: 5px 5px 5px 0px rgba(207, 207, 207, 1);
+    border: 1px solid lightgrey;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    color: black; /* Default text color */
+    text-decoration: none;
+  }
+
+  .btn-404:hover {
+    transform: scale(1.01);
+  }
+}

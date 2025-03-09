@@ -35,7 +35,7 @@ const Preferences: React.FC = () => {
           setPreferences({
             allergies: ['Dairy', 'Peanuts'],
             dietaryConstraints: ['Vegetarian'],
-            flavors: ['Spicy', 'Savory'],
+            flavors: ['Spicy', 'Sweet'],
             specialPreferences: ['Low-Sodium']
           })
           setLoading(false)

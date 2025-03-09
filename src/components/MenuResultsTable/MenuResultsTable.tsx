@@ -75,7 +75,7 @@ export default function MenuResultsTable() {
     },
     {
       accessorKey: 'green',
-      header: ' Favorite',
+      header: ' Green',
       cell: info =>
         info.getValue() ? (
           <div

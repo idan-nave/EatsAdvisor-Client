@@ -1,20 +1,21 @@
+import { useUserProfileContext } from '@context'
 import './step-allergies.css'
 
 interface Allergy {
-  allergy: string;
+  allergy: string
 }
 
 interface StepAllergiesProps {
-  allergyQuery: string;
-  setAllergyQuery: React.Dispatch<React.SetStateAction<string>>;
-  allergyError: string;
-  setAllergyError: React.Dispatch<React.SetStateAction<string>>;
-  allergyFields: any;
-  appendAllergy: (data: Allergy) => void;
-  removeAllergy: (index: number) => void;
-  filteredAllergyOptions: string[];
-  nextStep: () => void;
-  prevStep: () => void;
+  allergyQuery: string
+  setAllergyQuery: React.Dispatch<React.SetStateAction<string>>
+  allergyError: string
+  setAllergyError: React.Dispatch<React.SetStateAction<string>>
+  allergyFields: any
+  appendAllergy: (data: Allergy) => void
+  removeAllergy: (index: number) => void
+  filteredAllergyOptions: string[]
+  nextStep: () => void
+  prevStep: () => void
 }
 
 const StepAllergies: React.FC<StepAllergiesProps> = ({
@@ -29,6 +30,7 @@ const StepAllergies: React.FC<StepAllergiesProps> = ({
   nextStep,
   prevStep,
 }) => {
+  const { profile, loading } = useUserProfileContext()
   return (
     <div className="user-profile-form-step-container step-1">
       <h2 className="user-profile-step-headers">Allergies</h2>
@@ -41,8 +43,8 @@ const StepAllergies: React.FC<StepAllergiesProps> = ({
           id="allergy-input"
           value={allergyQuery}
           onChange={e => {
-            setAllergyQuery(e.target.value);
-            if (allergyError) setAllergyError('');
+            setAllergyQuery(e.target.value)
+            if (allergyError) setAllergyError('')
           }}
           placeholder="Search for an Allergy:"
         />
@@ -51,17 +53,18 @@ const StepAllergies: React.FC<StepAllergiesProps> = ({
           className="add-allergy-btn"
           onClick={() => {
             if (allergyQuery.trim() !== '') {
-              const newAllergy = allergyQuery.trim();
+              const newAllergy = allergyQuery.trim()
               const duplicate = allergyFields.some(
                 (field: any) =>
-                  field.allergy.trim().toLowerCase() === newAllergy.toLowerCase()
-              );
+                  field.allergy.trim().toLowerCase() ===
+                  newAllergy.toLowerCase(),
+              )
               if (duplicate) {
-                setAllergyError('This allergy has already been selected.');
+                setAllergyError('This allergy has already been selected.')
               } else {
-                appendAllergy({ allergy: newAllergy });
-                setAllergyQuery('');
-                setAllergyError('');
+                appendAllergy({ allergy: newAllergy })
+                setAllergyQuery('')
+                setAllergyError('')
               }
             }
           }}
@@ -88,7 +91,10 @@ const StepAllergies: React.FC<StepAllergiesProps> = ({
       )}
       {allergyFields.length > 0 && (
         <div className="allergys-fields-container">
-          <ul className="allergys-fields-list" style={{ listStyleType: 'none', padding: 0 }}>
+          <ul
+            className="allergys-fields-list"
+            style={{ listStyleType: 'none', padding: 0 }}
+          >
             {allergyFields.map((field: any, index: number) => (
               <div className="allergys-couple" key={field.id}>
                 <li className="allergy-field">{field.allergy}</li>
@@ -105,16 +111,42 @@ const StepAllergies: React.FC<StepAllergiesProps> = ({
         </div>
       )}
       {allergyError && <div className="error-message">{allergyError}</div>}
-      <div className="allergy-buttons-container">
-        <button className="allergy-btn" type="button" onClick={prevStep}>
-          Back
+      {/* <div className="allergy-buttons-container">
+        {profile && (
+          <button
+            className="allergy-btn"
+            type="button"
+            onClick={prevStep}
+          >
+            Back
+          </button>
+        )}
+        <button
+          disabled={!!allergyError}
+          className="allergy-btn"
+          type="button"
+          onClick={nextStep}
+        >
+          Next
         </button>
-        <button disabled={!!allergyError} className="allergy-btn" type="button" onClick={nextStep}>
+      </div> */}
+      <div className="allergy-buttons-container">
+        {!profile && (
+          <button className="allergy-btn" type="button" onClick={prevStep}>
+            Back
+          </button>
+        )}
+        <button
+          disabled={!!allergyError}
+          className={`allergy-btn ${profile ? 'full-width' : ''}`}
+          type="button"
+          onClick={nextStep}
+        >
           Next
         </button>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default StepAllergies;
+export default StepAllergies

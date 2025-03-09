@@ -30,18 +30,18 @@ export default function ImageUploader() {
     <div className="image-uploader-container">
       {user && (
         <div className="welcome-message">
-          <h2>Welcome, {user.firstName || 'User'}!</h2>
+          <div className='welcome-message-inner'>Welcome, {user.firstName || 'User'}!</div>
           <p>Ready to discover personalized menu recommendations?</p>
         </div>
       )}
       
-      <div>
+      <div className='upload-message-container'>
         <div>Upload a menu image to receive personalized</div>
         <span className="green-ai-text">AI-powered</span> recommendations
       </div>
 
       <label className="upload-button" onClick={handleButtonClick}>
-        Upload a Menu
+      <span>Upload a Menu</span>
         <input
           className="upload-input"
           type="file"

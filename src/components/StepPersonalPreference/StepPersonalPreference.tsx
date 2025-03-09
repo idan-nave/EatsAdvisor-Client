@@ -26,7 +26,7 @@ const StepPersonalPreference: React.FC<StepPersonalPreferenceProps> = ({
           Back
         </button>
         <button className="personal-preference-nav-btn" type="submit">
-          Submit
+          Save
         </button>
       </div>
     </div>

@@ -6,6 +6,7 @@ import './nav-bar.css'
 import { ROUTES } from '@constants'
 import { useAuth } from '@context'
 import { FaUserCircle, FaSignOutAlt } from 'react-icons/fa'
+import { PiSignOutLight } from 'react-icons/pi'
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -25,7 +26,8 @@ const NavBar = () => {
       {!isOpen && (
         <nav className="nav-bar">
           <div className="logo-container" onClick={() => navigate(ROUTES.BASE)}>
-            <span className="first-letter">E</span>ats<span className="first-letter">A</span>dvisor
+            <span className="first-letter">E</span>ats
+            <span className="first-letter">A</span>dvisor
           </div>
           <div className="nav-links-container">
             <div className="menu-icon" onClick={() => setIsOpen(true)}>
@@ -68,12 +70,11 @@ const NavBar = () => {
                   <div className="user-actions">
                     <FaUserCircle
                       className="user-icon"
-                      color="black"
                       size={28}
                       onClick={() => navigate(ROUTES.PROFILE)}
                       title="Profile"
                     />
-                    <NavLink
+                    {/* <NavLink
                       to={ROUTES.PREFERENCES}
                       className={({ isActive }) =>
                         isActive ? 'nav-bar-link active' : 'nav-bar-link'
@@ -81,11 +82,11 @@ const NavBar = () => {
                       onClick={handleLinkClick}
                     >
                       Preferences
-                    </NavLink>
-                    <FaSignOutAlt
+                    </NavLink> */}
+                    <PiSignOutLight
                       className="logout-icon"
-                      color="#d32f2f"
-                      size={24}
+                      // color="black"
+                      size={30}
                       onClick={logout}
                       title="Logout"
                     />
@@ -106,7 +107,7 @@ const NavBar = () => {
               <li className="back-btn" onClick={handelBackClick}>
                 <TfiArrowCircleLeft
                   size={30}
-                  color="black"
+                  // color="black"
                   className="back-icon"
                 />
               </li>
@@ -122,7 +123,8 @@ const NavBar = () => {
               className="logo-container"
               onClick={() => navigate(ROUTES.BASE)}
             >
-              <span className="first-letter">E</span>ats<span className="first-letter">A</span>dvisor
+              <span className="first-letter">E</span>ats
+              <span className="first-letter">A</span>dvisor
             </div>
             <div className="menu-close-icon" onClick={() => setIsOpen(false)}>
               <FiX style={{ color: '#2e7d32' }} />
@@ -165,10 +167,13 @@ const NavBar = () => {
             <li className="nav-link">
               {user ? (
                 <div className="mobile-user-actions">
-                  <div className="mobile-user-action" onClick={() => {
-                    navigate(ROUTES.PROFILE)
-                    setIsOpen(false)
-                  }}>
+                  <div
+                    className="mobile-user-action"
+                    onClick={() => {
+                      navigate(ROUTES.PROFILE)
+                      setIsOpen(false)
+                    }}
+                  >
                     <FaUserCircle
                       className="user-icon"
                       color="black"
@@ -176,19 +181,25 @@ const NavBar = () => {
                     />
                     <span>Profile</span>
                   </div>
-                  <div className="mobile-user-action" onClick={() => {
-                    navigate(ROUTES.PREFERENCES)
-                    setIsOpen(false)
-                  }}>
+                  {/* <div
+                    className="mobile-user-action"
+                    onClick={() => {
+                      navigate(ROUTES.PREFERENCES)
+                      setIsOpen(false)
+                    }}
+                  >
                     <span>Preferences</span>
-                  </div>
-                  <div className="mobile-user-action" onClick={() => {
-                    logout()
-                    setIsOpen(false)
-                  }}>
-                    <FaSignOutAlt
+                  </div> */}
+                  <div
+                    className="mobile-user-action"
+                    onClick={() => {
+                      logout()
+                      setIsOpen(false)
+                    }}
+                  >
+                    <PiSignOutLight
                       className="logout-icon"
-                      color="#d32f2f"
+                      color="black"
                       size={25}
                     />
                     <span>Logout</span>

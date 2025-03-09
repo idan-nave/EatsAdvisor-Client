@@ -7,15 +7,21 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  gap: 20px;
+  gap: 10px;
   -webkit-box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   -moz-box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   border: 1px solid #e0e0e0;
   border-radius: 14px;
   padding: 30px;
-  background-color: #ffffff;
-  margin: 20px auto;
+  /* background-color: #ffffff; */
+  margin: 120px auto;
+  border: 1px solid lightgray;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(2.2px);
+  -webkit-backdrop-filter: blur(2.2px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .welcome-title {
@@ -25,10 +31,13 @@
 }
 
 .welcome-text {
-  color: #555;
+  color: black;
   font-size: 1rem;
   line-height: 1.5;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+  border: 1px solid lightgray;
+  padding: 4px;
+  border-radius: 14px;
 }
 
 .sign-in-container {
@@ -39,9 +48,10 @@
   border-radius: 30px;
   padding: 8px 16px;
   border: 1px solid #e0e0e0;
-  background-color: #f9f9f9;
+  /* background-color: #f9f9f9; */
   transition: all 0.3s ease;
-  margin: 20px 0;
+  margin: 10px 0;
+  cursor: pointer;
 }
 
 .sign-in-btn {
@@ -51,7 +61,7 @@
   border: none;
   font-size: 1rem;
   font-weight: 500;
-  color: #555;
+  color: black;
   cursor: pointer;
 }
 
@@ -68,8 +78,9 @@
   border-radius: 8px;
   text-align: left;
   font-size: 0.85rem;
-  color: #666;
+  color: black;
   width: 100%;
+  border: 1px solid lightgray;
 }
 
 .disclaimer h3 {
