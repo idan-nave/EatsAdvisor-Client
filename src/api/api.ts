@@ -1,4 +1,3 @@
-import { ROUTES } from '@constants'
 import { UserPreferences } from '@interfaces'
 import axios from 'axios'
 
@@ -17,12 +16,12 @@ export interface UserPreferencesServer {
   };
   specialPreferences: string[];
   dietaryConstraints: string[];
-  dishHistory: Record<string, any>; 
+  dishHistory: Record<string, unknown>;
 }
 
 
 const api = axios.create({
-  baseURL: ROUTES.BASE_URL, 
+  baseURL: import.meta.env.VITE_API_URL,
   withCredentials: true,
   headers: {
     'Content-Type': 'application/json',
@@ -66,9 +65,9 @@ export const checkUserProfile = async (email: string) => {
   try {
     const response = await api.post('/profile/get', { email });
     return response.data;
-  } catch (error: any) {
-    if (error.response && error.response.status === 404) {
-      return null; 
+  } catch (error: unknown) {
+    if (error instanceof Error && axios.isAxiosError(error) && error.response && error.response.status === 404) {
+      return null;
     }
     console.error('Error checking user profile:', error);
     throw error;
@@ -79,7 +78,7 @@ export const getUserPreferences = async (): Promise<UserPreferencesServer> => {
   try {
     const response = await api.get<UserPreferencesServer>('/profile/preferences');
     return response.data;
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Error retrieving user preferences:', error);
     throw error;
   }
