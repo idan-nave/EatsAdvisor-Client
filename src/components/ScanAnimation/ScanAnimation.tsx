@@ -19,14 +19,14 @@ const ScanAnimation: React.FC = () => {
 
     const uploadFile = async () => {
       try {
-        // Use the uploadMenu function from api.ts
         const data = await uploadMenu(file)
         
-        console.log(data)
+        console.log("data", data)
 
         setTimeout(() => navigate(ROUTES.MENU_TABLE, { state: { data } }), 2000)
       } catch (err) {
-        setError(err.message || 'Failed to upload menu')
+   
+        setError(err.response.data.error || 'Failed to upload menu')
       }
     }
 

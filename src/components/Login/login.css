@@ -14,7 +14,6 @@
   border: 1px solid #e0e0e0;
   border-radius: 14px;
   padding: 30px;
-  /* background-color: #ffffff; */
   margin: 120px auto;
   border: 1px solid lightgray;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -48,7 +47,6 @@
   border-radius: 30px;
   padding: 8px 16px;
   border: 1px solid #e0e0e0;
-  /* background-color: #f9f9f9; */
   transition: all 0.3s ease;
   margin: 10px 0;
   cursor: pointer;

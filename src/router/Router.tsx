@@ -65,16 +65,12 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
-      // {
-      //   path: ROUTES.PREFERENCES,
-      //   element: (
-      //     <PrivateRoute>
-      //       <Preferences />
-      //     </PrivateRoute>
-      //   ),
-      // },
-      { path: ROUTES.LOGIN, element: <Login /> },
-      { path: ROUTES.CATCH_ALL, element: <NotFound /> },
+      { path: ROUTES.LOGIN, element: <Login />, errorElement: <ErrorPage /> },
+      {
+        path: ROUTES.CATCH_ALL,
+        element: <NotFound />,
+        errorElement: <ErrorPage />,
+      },
     ],
   },
 ])

@@ -107,6 +107,6 @@ docker-compose.override.yml
 # Build artifacts
 *.jar
 *.war
-
+test-java
 
 .fake

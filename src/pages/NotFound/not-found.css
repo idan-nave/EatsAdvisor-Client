@@ -1,5 +1,4 @@
 .not-found-page-container {
-  /* border: 2px solid red; */
   min-height: 100vh;
   min-width: 100vw;
   display: flex;
@@ -26,7 +25,6 @@
 
   .not-found-message {
     width: 90%;
-    /* border: 2px solid red; */
   }
 
   .btn-404 {
@@ -47,7 +45,7 @@
     cursor: pointer;
     position: relative;
     overflow: hidden;
-    color: black; /* Default text color */
+    color: black; 
     text-decoration: none;
   }
 

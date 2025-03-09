@@ -55,16 +55,7 @@ const NavBar = () => {
                   About
                 </NavLink>
               </li>
-              <li className="nav-link">
-                <NavLink
-                  to={ROUTES.API_DOCS}
-                  className={({ isActive }) =>
-                    isActive ? 'nav-bar-link active' : 'nav-bar-link'
-                  }
-                >
-                  API
-                </NavLink>
-              </li>
+
               <li className="nav-link">
                 {user ? (
                   <div className="user-actions">
@@ -74,18 +65,8 @@ const NavBar = () => {
                       onClick={() => navigate(ROUTES.PROFILE)}
                       title="Profile"
                     />
-                    {/* <NavLink
-                      to={ROUTES.PREFERENCES}
-                      className={({ isActive }) =>
-                        isActive ? 'nav-bar-link active' : 'nav-bar-link'
-                      }
-                      onClick={handleLinkClick}
-                    >
-                      Preferences
-                    </NavLink> */}
                     <PiSignOutLight
                       className="logout-icon"
-                      // color="black"
                       size={30}
                       onClick={logout}
                       title="Logout"
@@ -107,7 +88,7 @@ const NavBar = () => {
               <li className="back-btn" onClick={handelBackClick}>
                 <TfiArrowCircleLeft
                   size={30}
-                  // color="black"
+
                   className="back-icon"
                 />
               </li>
@@ -131,17 +112,6 @@ const NavBar = () => {
             </div>
           </div>
           <ul className="overlay-links">
-            <li className="nav-link">
-              <NavLink
-                to={ROUTES.API_DOCS}
-                className={({ isActive }) =>
-                  isActive ? 'nav-bar-link active' : 'nav-bar-link'
-                }
-                onClick={handleLinkClick}
-              >
-                API
-              </NavLink>
-            </li>
             <li className="nav-link">
               <NavLink
                 to={ROUTES.ABOUT}
@@ -181,15 +151,6 @@ const NavBar = () => {
                     />
                     <span>Profile</span>
                   </div>
-                  {/* <div
-                    className="mobile-user-action"
-                    onClick={() => {
-                      navigate(ROUTES.PREFERENCES)
-                      setIsOpen(false)
-                    }}
-                  >
-                    <span>Preferences</span>
-                  </div> */}
                   <div
                     className="mobile-user-action"
                     onClick={() => {

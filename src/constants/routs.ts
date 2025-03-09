@@ -12,6 +12,7 @@ const ROUTES = {
   CATCH_ALL: '*',
   MENU_SCAN: '/scan',
   MENU_TABLE: '/menu-table',
+  BASE_URL: 'http://localhost:8080'
 }
 
 export default ROUTES

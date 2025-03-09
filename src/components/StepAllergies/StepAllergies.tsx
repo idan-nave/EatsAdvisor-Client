@@ -111,25 +111,6 @@ const StepAllergies: React.FC<StepAllergiesProps> = ({
         </div>
       )}
       {allergyError && <div className="error-message">{allergyError}</div>}
-      {/* <div className="allergy-buttons-container">
-        {profile && (
-          <button
-            className="allergy-btn"
-            type="button"
-            onClick={prevStep}
-          >
-            Back
-          </button>
-        )}
-        <button
-          disabled={!!allergyError}
-          className="allergy-btn"
-          type="button"
-          onClick={nextStep}
-        >
-          Next
-        </button>
-      </div> */}
       <div className="allergy-buttons-container">
         {!profile && (
           <button className="allergy-btn" type="button" onClick={prevStep}>

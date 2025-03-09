@@ -1,5 +1,4 @@
 .image-uploader-container {
-  /* height: 100%; */
   width: 100%;
   max-width: 500px;
   font-size: 1.9rem;
@@ -9,27 +8,19 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  /* gap: 30px; */
   -webkit-box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   -moz-box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   border: 1px solid #e0e0e0;
   border-radius: 14px;
   padding: 30px;
-  /* background-color: #ffffff; */
-  /* margin-top: 80px;  */
-  /* Add margin to prevent header overlap */
-  /* border: 2px solid blue; */
 }
 
 .welcome-message {
   width: 100%;
-  /* padding-bottom: 20px; */
   border-bottom: 1px solid #e0e0e0;
-  /* border: 2px solid yellow; */
   min-width: 280px;
   width: 70%;
-  /* margin-bottom: 10px; */
 }
 
 .welcome-message .welcome-message-inner {
@@ -39,7 +30,6 @@
 }
 
 .upload-message-container {
-  /* border: 2px solid yellow; */
   margin-top: 10px;
   min-width: 280px;
   width: 70%;
@@ -50,52 +40,6 @@
   font-size: 1.1rem;
   font-weight: normal;
 }
-
-/* .upload-button {
-  width: 250px;
-  height: 55px;
-
-  margin-top: 20px;
-  margin-bottom: 10px;
-  background-color: transparent;
-  border-radius: 14px;
-  padding: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  font-size: 1rem;
-  -webkit-box-shadow: 5px 5px 5px 0px rgba(207, 207, 207, 1);
-  -moz-box-shadow: 5px 5px 5px 0px rgba(207, 207, 207, 1);
-  box-shadow: 5px 5px 5px 0px rgba(207, 207, 207, 1);
-  border: 1px solid lightgrey;
-  cursor: pointer;
-} */
-
-/* .upload-button:hover {
-  transform: scale(1.01);
-} */
-
-/* .upload-button::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 0%;
-  height: 100%;
-  background-color: lightgreen;
-  transition: width 0.4s ease-in-out;
-  z-index: 0;
-}
-
-.upload-button:hover::before {
-  width: 100%;
-}
-
-.upload-button span {
-  position: relative;
-  z-index: 1;
-} */
 
 .upload-button {
   width: 250px;
@@ -115,11 +59,11 @@
   cursor: pointer;
   position: relative;
   overflow: hidden;
-  color: black; /* Default text color */
+  color: black;
 }
 
 .upload-button::before {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
@@ -136,7 +80,7 @@
 
 .upload-button span {
   position: relative;
-  z-index: 1; /* Ensures the text is above the ::before pseudo-element */
+  z-index: 1;
 }
 
 .upload-button input {
@@ -146,10 +90,6 @@
   opacity: 0;
   cursor: pointer;
 }
-
-
-
-
 
 .green-ai-text {
   color: #2e7d32;
