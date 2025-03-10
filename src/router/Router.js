@@ -1,10 +1,10 @@
 import { jsx as _jsx } from "react/jsx-runtime";
 import { createBrowserRouter } from 'react-router';
-import { ROUTES } from '@constants';
-import { About, ApiDocs, ErrorPage, Home, NotFound, UserProfile, } from '@pages';
-import { Login, MenuResultsTable, PrivateRoute, ScanAnimation, } from '@components';
-import { BaseLayout } from '@layouts';
-import { AuthProvider, UserProfileProvider } from '@context';
+import { ROUTES } from '@constants/index';
+import { About, ApiDocs, ErrorPage, Home, NotFound, UserProfile, } from '@pages/index';
+import { Login, MenuResultsTable, PrivateRoute, ScanAnimation, } from '@components/index';
+import { BaseLayout } from '@layouts/index';
+import { AuthProvider, UserProfileProvider } from '@context/index';
 export var router = createBrowserRouter([
     {
         path: ROUTES.BASE,

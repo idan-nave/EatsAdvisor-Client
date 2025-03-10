@@ -1,28 +1,34 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-import tsconfigPaths from 'vite-tsconfig-paths'
-import basicSSL from '@vitejs/plugin-basic-ssl'
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
 import path from 'path';
+import tsconfigPaths from 'vite-tsconfig-paths';
 
 export default defineConfig({
-  plugins: [react(), tsconfigPaths(), basicSSL()],
+  server: {
+    https: {},
+  },
   resolve: {
     alias: {
-      '@styles': path.resolve(__dirname, './src/styles'),
-      '@components': path.resolve(__dirname, './src/components'),
-      '@router': path.resolve(__dirname, './src/router'),
-      '@constants': path.resolve(__dirname, './src/constants'),
-      '@hooks': path.resolve(__dirname, './src/hooks'),
-      '@pages': path.resolve(__dirname, './src/pages'),
-      '@api': path.resolve(__dirname, './src/api'),
-      '@context': path.resolve(__dirname, './src/context'),
-      '@layouts': path.resolve(__dirname, './src/layouts'),
-      '@types': path.resolve(__dirname, './src/types'),
-      '@interfaces': path.resolve(__dirname, './src/interfaces'),
+      '@': path.resolve(__dirname, 'src'),
+      '@context': path.resolve(__dirname, 'src/context'),
+      '@interfaces': path.resolve(__dirname, 'src/interfaces'),
+      '@constants': path.resolve(__dirname, 'src/constants'),
+      '@pages': path.resolve(__dirname, 'src/pages'),
+      '@components': path.resolve(__dirname, 'src/components'),
+      '@router': path.resolve(__dirname, 'src/router'),
+      '@layouts': path.resolve(__dirname, 'src/layouts'),
+      '@types': path.resolve(__dirname, 'src/types'),
+      '@api': path.resolve(__dirname, 'src/api'),
+      '@styles': path.resolve(__dirname, 'src/styles'),
     },
   },
-  server: {
-    port: 3001, // Change to port 3001
-    https: {}
+  plugins: [react(), tsconfigPaths()],
+  build: {
+    rollupOptions: {
+      external: [
+        '@pages/index',
+        'api/api',
+      ],
+    },
   },
-})
+});

@@ -24,9 +24,9 @@ const ScanAnimation: React.FC = () => {
         console.log("data", data)
 
         setTimeout(() => navigate(ROUTES.MENU_TABLE, { state: { data } }), 2000)
-      } catch (err) {
-   
-        setError(err.response.data.error || 'Failed to upload menu')
+      } catch (err: unknown) {
+        const errorObj = err as { response?: { data?: { error?: string } } };
+        setError(errorObj.response?.data?.error || 'Failed to upload menu');
       }
     }
 

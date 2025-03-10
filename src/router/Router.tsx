@@ -7,7 +7,6 @@ import {
   Home,
   NotFound,
   UserProfile,
-  Preferences,
 } from '@pages'
 import {
   Login,

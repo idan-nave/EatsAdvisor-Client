@@ -268,7 +268,7 @@ import './user-profile.css';
 import { StepAllergies, StepFlavorRatings, StepPersonalPreference, StepRestrictions, StepSpecificDishes, } from '@components';
 import { ROUTES } from '@constants';
 import { useUserProfileContext, useAuth } from '@context';
-import { saveUserPreferences } from '@api/api';
+import { saveUserPreferences } from 'api/api';
 import { RiseLoader } from 'react-spinners';
 var flavorList = ['Sweet', 'Sour', 'Salty', 'Bitter', 'Spicy'];
 var allergyOptions = [

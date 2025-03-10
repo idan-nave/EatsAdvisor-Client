@@ -51,10 +51,10 @@ const Preferences: React.FC = () => {
     }
   }, [user])
 
-  const handleTogglePreference = (category: string, item: string) => {
+  const handleTogglePreference = (category: 'allergies' | 'dietaryConstraints' | 'flavors' | 'specialPreferences', item: string) => {
     setPreferences(prev => {
       const updatedCategory = prev[category].includes(item)
-        ? prev[category].filter(i => i !== item)
+        ? ((prev[category as keyof typeof prev]) as string[]).filter((i: string) => i !== item)
         : [...prev[category], item]
       
       return {
