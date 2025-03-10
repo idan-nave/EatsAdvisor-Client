@@ -8,7 +8,7 @@
   overflow-x: hidden;
   background-color: #ffffff;
   opacity: 1;
-  background: url('src/assets/chinese-cuisine-dishes-white-background-with-space-text_1235831-45426.jpg');
+  background: url('/assets/chinese-cuisine-dishes-white-background-with-space-text_1235831-45426.jpg');
   object-fit: contain;
   background-size: 17px 17px;
   display: flex;
@@ -19,7 +19,7 @@
   overflow-x: hidden;
   background-color: #ffffff;
   opacity: 1;
-  background: url('src/assets/chinese-cuisine-dishes-white-background-with-space-text_1235831-45426.jpg') no-repeat center center;
+  background: url('/assets/chinese-cuisine-dishes-white-background-with-space-text_1235831-45426.jpg') no-repeat center center;
   background-size: cover;
   display: flex;
   flex-direction: column;

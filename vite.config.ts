@@ -6,9 +6,9 @@ import tsconfigPaths from 'vite-tsconfig-paths';
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '');
   return {
+    base: './',
     server: {
       port: parseInt(env.PORT || '3001'),
-      https: {},
     },
     resolve: {
       alias: {
@@ -22,16 +22,13 @@ export default defineConfig(({ mode }) => {
         '@layouts': path.resolve(__dirname, 'src/layouts'),
         '@types': path.resolve(__dirname, 'src/types'),
         '@api': path.resolve(__dirname, 'src/api'),
+        'api': path.resolve(__dirname, 'src/api'),
         '@styles': path.resolve(__dirname, 'src/styles'),
       },
     },
     plugins: [react(), tsconfigPaths()],
     build: {
       rollupOptions: {
-        external: [
-          '@pages/index',
-          'api/api',
-        ],
       },
     },
   };
