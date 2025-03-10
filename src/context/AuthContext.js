@@ -111,10 +111,6 @@ export var AuthProvider = function (_a) {
         console.log('[AuthProvider] Redirecting to Google OAuth login');
         window.location.href = "".concat(api.defaults.baseURL, "/oauth2/authorization/google");
     };
-    var handleLoginRedirect = function () {
-        console.log('[AuthProvider] Redirecting to /dashboard');
-        navigate('/dashboard');
-    };
     var logout = function () { return __awaiter(void 0, void 0, void 0, function () {
         var error_2;
         return __generator(this, function (_a) {
@@ -138,7 +134,7 @@ export var AuthProvider = function (_a) {
             }
         });
     }); };
-    return (_jsx(AuthContext.Provider, { value: { user: user, loading: loading, login: login, logout: logout, handleLoginRedirect: handleLoginRedirect }, children: children }));
+    return (_jsx(AuthContext.Provider, { value: { user: user, loading: loading, login: login, logout: logout}, children: children }));
 };
 export var useAuth = function () {
     var context = useContext(AuthContext);

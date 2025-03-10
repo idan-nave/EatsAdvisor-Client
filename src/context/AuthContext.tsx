@@ -9,7 +9,6 @@ interface AuthContextType {
   loading: boolean;
   login: () => void;
   logout: () => Promise<void>;
-  handleLoginRedirect: () => void;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -86,11 +85,6 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     window.location.href = `${api.defaults.baseURL}/oauth2/authorization/google`;
   };
 
-  const handleLoginRedirect = () => {
-    console.log('[AuthProvider] Redirecting to /dashboard');
-    navigate('/dashboard');
-  };
-
   const logout = async () => {
     console.log('[AuthProvider] Logging out');
     try {
@@ -103,7 +97,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ user, loading, login, logout, handleLoginRedirect }}>
+    <AuthContext.Provider value={{ user, loading, login, logout }}>
       {children}
     </AuthContext.Provider>
   );

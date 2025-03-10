@@ -12,7 +12,6 @@ export var router = createBrowserRouter([
         errorElement: _jsx(ErrorPage, {}),
         children: [
             { index: true, element: _jsx(Home, {}) },
-            { path: ROUTES.DASHBOARD, element: _jsx(Home, {}) },
             { path: ROUTES.ABOUT, element: _jsx(About, {}) },
             {
                 path: ROUTES.API_DOCS,

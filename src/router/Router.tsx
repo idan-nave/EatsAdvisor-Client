@@ -30,7 +30,6 @@ export const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       { index: true, element: <Home /> },
-      { path: ROUTES.DASHBOARD, element: <Home /> },
       { path: ROUTES.ABOUT, element: <About /> },
       {
         path: ROUTES.API_DOCS,
