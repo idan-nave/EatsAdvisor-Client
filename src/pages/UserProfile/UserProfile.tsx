@@ -12,7 +12,7 @@ import {
 import { ROUTES } from '@constants'
 import { useUserProfileContext } from '@context'
 import { UserPreferences } from '@interfaces'
-import { saveUserPreferences } from '../../api';
+import { saveUserPreferences } from '../../api'
 import { RiseLoader } from 'react-spinners'
 
 interface Allergy {
@@ -65,9 +65,17 @@ const allergyOptions = [
   'Alcohol',
 ]
 
+const defaultValues: FormValues = {
+  allergies: [],
+  restrictions: [],
+  flavorRatings: flavorList.map(flavor => ({ flavor, rating: '5' })),
+  dishes: [{ name: '' }],
+  personalPreference: '',
+}
+
 const UserProfile: React.FC = () => {
-  const navigate = useNavigate();
-  const { profile, loading, refetchProfile } = useUserProfileContext();
+  const navigate = useNavigate()
+  const { profile, loading, refetchProfile } = useUserProfileContext()
 
   const {
     register,
@@ -77,13 +85,16 @@ const UserProfile: React.FC = () => {
     watch,
     formState: { errors },
   } = useForm<FormValues>({
-    defaultValues: {
-      allergies: [],
-      restrictions: [],
-      flavorRatings: flavorList.map(flavor => ({ flavor, rating: '5' })), // default rating set to 5
-      dishes: [{ name: '' }],
-      personalPreference: '',
-    },
+    // If profile exists, convert the flavor ratings to strings; otherwise, use the default values.
+    defaultValues: profile
+      ? {
+          ...profile,
+          flavorRatings: profile.flavorRatings.map(fr => ({
+            flavor: fr.flavor,
+            rating: String(fr.rating),
+          })),
+        }
+      : defaultValues,
   })
 
   const {
@@ -102,21 +113,21 @@ const UserProfile: React.FC = () => {
 
   // Steps: 0: Introduction, 1: Allergies, 2: Restrictions, 3: Flavor Ratings, 4: Specific Dishes, 5: Personal Preference
   // If profile exists, we skip step 0 by setting the step to 1.
-  const [step, setStep] = useState(0)
+  const [step, setStep] = useState(profile ? 1 : 0)
   const [allergyQuery, setAllergyQuery] = useState('')
   const [allergyError, setAllergyError] = useState('')
   const [isSubmitting, setIsSubmitting] = useState(false)
 
+  // When profile changes, update the form with the converted profile values and skip the intro step.
   useEffect(() => {
     if (profile) {
-      const convertedProfile: FormValues = {
+      reset({
         ...profile,
         flavorRatings: profile.flavorRatings.map(fr => ({
           flavor: fr.flavor,
           rating: String(fr.rating),
         })),
-      }
-      reset(convertedProfile)
+      })
       setStep(1)
     }
   }, [profile, reset])
@@ -128,24 +139,19 @@ const UserProfile: React.FC = () => {
     const formattedData: UserPreferences = {
       allergies: data.allergies.map(item => item.allergy),
       dietaryConstraints: data.restrictions,
-      flavorPreferences: data.flavorRatings.reduce(
-        (acc, item) => {
-          acc[item.flavor] = parseInt(item.rating)
-          return acc
-        },
-        {} as Record<string, number>,
-      ),
+      flavorPreferences: data.flavorRatings.reduce((acc, item) => {
+        acc[item.flavor] = parseInt(item.rating)
+        return acc
+      }, {} as Record<string, number>),
       specificDishes: data.dishes.map(dish => dish.name),
-      specialPreferences: data.personalPreference
-        ? [data.personalPreference]
-        : [],
+      specialPreferences: data.personalPreference ? [data.personalPreference] : [],
     }
 
     console.log('formattedData', formattedData)
 
     try {
-      const result = await saveUserPreferences(formattedData);
-      console.log('form save result', result);
+      const result = await saveUserPreferences(formattedData)
+      console.log('form save result', result)
 
       if (result) {
         refetchProfile()
@@ -154,7 +160,6 @@ const UserProfile: React.FC = () => {
     } catch (error) {
       console.error('Error saving preferences:', error)
     } finally {
-      // Only update isSubmitting if the navigation did not occur
       setIsSubmitting(false)
     }
   }
@@ -166,7 +171,6 @@ const UserProfile: React.FC = () => {
     option.toLowerCase().includes(allergyQuery.toLowerCase()),
   )
 
-  // Display a loading indicator when the user profile is being loaded or when the form is submitting.
   if (loading || isSubmitting) {
     return <RiseLoader color="#2e7d32" size={15} />
   }
@@ -180,12 +184,11 @@ const UserProfile: React.FC = () => {
             <span style={{ color: '#2e7d32' }}>A</span>dvisor
           </h2>
           <h3 className="user-profile-step-headers">
-            World first <span style={{ color: '#2e7d32' }}>AI</span> based
-            Culinary Adviser
+            World first <span style={{ color: '#2e7d32' }}>AI</span> based Culinary
+            Adviser
           </h3>
           <h3 className="user-profile-step-headers">
-            Please provide us with some information about your culinary
-            preferences.
+            Please provide us with some information about your culinary preferences.
           </h3>
           <div>
             <button className="form-step-btn" type="button" onClick={nextStep}>

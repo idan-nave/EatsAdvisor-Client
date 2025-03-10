@@ -5,6 +5,14 @@ import React, {
   useEffect,
   ReactNode,
 } from 'react'
+import { useAuth } from './AuthContext'
+import { checkUserProfile, getUserPreferences } from '@/api'
+import { convertToFormValues } from '@/utils'
+
+const isEmpty = (obj: object): boolean => {
+  return Object.keys(obj).length === 0;
+};
+
 
 // Define your data types
 export interface Allergy {
@@ -36,15 +44,47 @@ const UserProfileContext = createContext<UserProfileContextProps | undefined>(
   undefined,
 )
 
-// Custom hook that fetches the user profile data
-export const useUserProfile = (): UserProfileContextProps => {
+/**
+ * Provider that fetches profile data when a user is present.
+ * If user is not logged in, profile is null.
+ */
+export const UserProfileProvider: React.FC<{ children: ReactNode }> = ({
+  children,
+}) => {
+  const { user } = useAuth()
   const [profile, setProfile] = useState<FormValues | null>(null)
   const [loading, setLoading] = useState<boolean>(true)
 
   const fetchProfile = async () => {
+    // If there is no user, do not fetch
+    if (!user) {
+      setProfile(null)
+      setLoading(false)
+      return
+    }
+
+    console.log('Fetching profile for user:', user.email)
     setLoading(true)
+
     try {
-      // Removed unused API calls to checkUserProfile and getUserPreferences.
+      // Call your API to get the user's preferences
+
+      const userPreferences = await getUserPreferences()
+      
+      if (!isEmpty(userPreferences)) {
+        // Transform the data into your FormValues format
+
+        console.log("userPreferences: ", userPreferences);
+        
+        const formValues = convertToFormValues(userPreferences)
+
+        // Set the profile
+        setProfile(formValues)
+        console.log('Profile fetched successfully:', formValues)
+      } else {
+        setProfile(null)
+      }
+      
     } catch (error) {
       console.error('Error fetching profile:', error)
       setProfile(null)
@@ -53,23 +93,15 @@ export const useUserProfile = (): UserProfileContextProps => {
     }
   }
 
+  // This effect will run when the component mounts AND whenever the user changes
   useEffect(() => {
     fetchProfile()
-  }, [])
+  }, [user]) // <- The key change: re-run when user changes
 
   const refetchProfile = () => {
-    console.log('Profile has been refetched')
+    console.log('Manually refetching profile')
     fetchProfile()
   }
-
-  return { profile, loading, refetchProfile }
-}
-
-// Create a provider component that makes the data available via context
-export const UserProfileProvider: React.FC<{ children: ReactNode }> = ({
-  children,
-}) => {
-  const { profile, loading, refetchProfile } = useUserProfile()
 
   return (
     <UserProfileContext.Provider value={{ profile, loading, refetchProfile }}>

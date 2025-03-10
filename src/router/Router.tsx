@@ -1,13 +1,6 @@
 import { createBrowserRouter } from 'react-router'
 import { ROUTES } from '@constants'
-import {
-  About,
-  ApiDocs,
-  ErrorPage,
-  Home,
-  NotFound,
-  UserProfile,
-} from '@pages'
+import { About, ApiDocs, ErrorPage, Home, NotFound, UserProfile } from '@pages'
 import {
   Login,
   MenuResultsTable,
@@ -21,11 +14,11 @@ export const router = createBrowserRouter([
   {
     path: ROUTES.BASE,
     element: (
-      <UserProfileProvider>
-        <AuthProvider>
+      <AuthProvider>
+        <UserProfileProvider>
           <BaseLayout />
-        </AuthProvider>
-      </UserProfileProvider>
+        </UserProfileProvider>
+      </AuthProvider>
     ),
     errorElement: <ErrorPage />,
     children: [

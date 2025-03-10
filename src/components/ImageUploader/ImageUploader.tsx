@@ -1,10 +1,11 @@
-import { useAuth } from '@context'
+import { useAuth, useUserProfileContext } from '@context'
 import { useNavigate } from 'react-router'
 import { ROUTES } from '@constants'
 import './image-uploader.css'
 
 export default function ImageUploader() {
   const { user } = useAuth()
+  const { profile } = useUserProfileContext()
   const navigate = useNavigate()
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -24,24 +25,31 @@ export default function ImageUploader() {
       event.preventDefault()
       navigate(ROUTES.LOGIN)
     }
+
+    if (!profile) {
+      event.preventDefault()
+      navigate(ROUTES.PROFILE)
+    }
   }
 
   return (
     <div className="image-uploader-container">
       {user && (
         <div className="welcome-message">
-          <div className='welcome-message-inner'>Welcome, {user.firstName || 'User'}!</div>
+          <div className="welcome-message-inner">
+            Welcome, {user.firstName || 'User'}!
+          </div>
           <p>Ready to discover personalized menu recommendations?</p>
         </div>
       )}
-      
-      <div className='upload-message-container'>
+
+      <div className="upload-message-container">
         <div>Upload a menu image to receive personalized</div>
         <span className="green-ai-text">AI-powered</span> recommendations
       </div>
 
       <label className="upload-button" onClick={handleButtonClick}>
-      <span>Upload a Menu</span>
+        <span>Upload a Menu</span>
         <input
           className="upload-input"
           type="file"

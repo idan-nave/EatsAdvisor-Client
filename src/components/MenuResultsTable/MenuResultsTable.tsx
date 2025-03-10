@@ -6,7 +6,9 @@ import {
   ColumnDef,
   flexRender,
 } from '@tanstack/react-table'
+import { CiHeart } from 'react-icons/ci'
 import './menu-results-table.css'
+import { IoIosHeartEmpty, IoMdHeart  } from "react-icons/io"
 
 type MenuCategory = {
   green: string[]
@@ -75,7 +77,7 @@ export default function MenuResultsTable() {
     },
     {
       accessorKey: 'green',
-      header: ' Green',
+      header: 'Green',
       cell: info =>
         info.getValue() ? (
           <div
@@ -123,6 +125,18 @@ export default function MenuResultsTable() {
             }}
           />
         ) : null,
+    },
+    {
+      id: 'favorite',
+      header: 'Like',
+      cell: info => (
+        <div
+          style={{ cursor: 'pointer', textAlign: 'center' }}
+          onClick={() => console.log(`❤️ ${info.row.original.meal}`)}
+        >
+          <IoMdHeart color='red' size={20} />
+        </div>
+      ),
     },
   ]
 

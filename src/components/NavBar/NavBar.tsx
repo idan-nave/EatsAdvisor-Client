@@ -21,6 +21,8 @@ const NavBar = () => {
     navigate(-1)
   }
 
+
+  console.log("hello from navbar");
   return (
     <>
       {!isOpen && (
