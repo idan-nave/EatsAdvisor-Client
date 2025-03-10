@@ -139,12 +139,17 @@ const UserProfile: React.FC = () => {
     const formattedData: UserPreferences = {
       allergies: data.allergies.map(item => item.allergy),
       dietaryConstraints: data.restrictions,
-      flavorPreferences: data.flavorRatings.reduce((acc, item) => {
-        acc[item.flavor] = parseInt(item.rating)
-        return acc
-      }, {} as Record<string, number>),
+      flavorPreferences: data.flavorRatings.reduce(
+        (acc, item) => {
+          acc[item.flavor] = parseInt(item.rating)
+          return acc
+        },
+        {} as Record<string, number>,
+      ),
       specificDishes: data.dishes.map(dish => dish.name),
-      specialPreferences: data.personalPreference ? [data.personalPreference] : [],
+      specialPreferences: data.personalPreference
+        ? [data.personalPreference]
+        : [],
     }
 
     console.log('formattedData', formattedData)
@@ -159,13 +164,18 @@ const UserProfile: React.FC = () => {
       }
     } catch (error) {
       console.error('Error saving preferences:', error)
+      // navigate('/error', { state: { errorMessage: error } })
     } finally {
       setIsSubmitting(false)
     }
   }
 
-  const nextStep = () => setStep(prev => prev + 1)
-  const prevStep = () => setStep(prev => prev - 1)
+  // const nextStep = () => setStep(prev => prev + 1)
+  // const prevStep = () => setStep(prev => prev - 1)
+
+  //skip step 4
+  const nextStep = () => setStep(prev => (prev === 3 ? 5 : prev + 1))
+  const prevStep = () => setStep(prev => (prev === 5 ? 3 : prev - 1))
 
   const filteredAllergyOptions = allergyOptions.filter(option =>
     option.toLowerCase().includes(allergyQuery.toLowerCase()),
@@ -184,15 +194,16 @@ const UserProfile: React.FC = () => {
             <span style={{ color: '#2e7d32' }}>A</span>dvisor
           </h2>
           <h3 className="user-profile-step-headers">
-            World first <span style={{ color: '#2e7d32' }}>AI</span> based Culinary
-            Adviser
+            World first <span style={{ color: '#2e7d32' }}>AI</span> based
+            Culinary Adviser
           </h3>
           <h3 className="user-profile-step-headers">
-            Please provide us with some information about your culinary preferences.
+            Please provide us with some information about your culinary
+            preferences.
           </h3>
           <div>
             <button className="form-step-btn" type="button" onClick={nextStep}>
-              Start
+              <span>Start</span>
             </button>
           </div>
         </div>

@@ -64,8 +64,8 @@
   -webkit-box-shadow: 5px 5px 5px 0px rgba(207, 207, 207, 1);
   -moz-box-shadow: 5px 5px 5px 0px rgba(207, 207, 207, 1);
   box-shadow: 5px 5px 5px 0px rgba(207, 207, 207, 1);
-  border: 1px solid lightgrey;
-  border-radius: 14px;
+  /* border: 1px solid lightgrey; */
+  border-radius: 8px;
   padding: 20px;
 
   .go-back-home{

@@ -39,6 +39,7 @@ export const router = createBrowserRouter([
             <UserProfile />
           </PrivateRoute>
         ),
+        errorElement: <ErrorPage/>
       },
       {
         path: ROUTES.MENU_SCAN,

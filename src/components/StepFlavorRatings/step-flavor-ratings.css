@@ -7,16 +7,20 @@
   .flavor-ratings-selects-container{
     width: 80%;
     padding: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 
     .flavor-ratings-select-container{
       display: flex;
       justify-content: space-around;
       align-items: center;
-      border: 2px solid blue;
       margin-bottom: 10px;
       padding: 8px;
       border: 1px solid lightgray;
       border-radius: 14px;
+      min-width: 100%;
 
       .flavor-rating-select{
         background: transparent;

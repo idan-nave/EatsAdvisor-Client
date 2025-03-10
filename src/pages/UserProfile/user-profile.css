@@ -48,9 +48,37 @@
     margin-top: 20px;
     border-radius: 2rem;
     color: white;
-    background-color: rgb(64, 116, 64);
     font-size: 14px;
     font-weight: bold;
     cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: color 0.3s ease-in-out;
+    color: black;
+    border: 1px solid lightgray;
   }
+  
+  .form-step-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    background-color: #2e7d32;
+    transition: width 0.8s ease-in-out;
+    z-index: 0;
+    color: black;
+  }
+  
+  .form-step-btn:hover::before {
+    width: 100%;
+    color: black;
+  }
+  
+  .form-step-btn span {
+    position: relative;
+    color: black;
+  }
+  
 }

@@ -10,9 +10,8 @@ import { checkUserProfile, getUserPreferences } from '@/api'
 import { convertToFormValues } from '@/utils'
 
 const isEmpty = (obj: object): boolean => {
-  return Object.keys(obj).length === 0;
-};
-
+  return Object.keys(obj).length === 0
+}
 
 // Define your data types
 export interface Allergy {
@@ -70,12 +69,12 @@ export const UserProfileProvider: React.FC<{ children: ReactNode }> = ({
       // Call your API to get the user's preferences
 
       const userPreferences = await getUserPreferences()
-      
+
       if (!isEmpty(userPreferences)) {
         // Transform the data into your FormValues format
 
-        console.log("userPreferences: ", userPreferences);
-        
+        console.log('userPreferences: ', userPreferences)
+
         const formValues = convertToFormValues(userPreferences)
 
         // Set the profile
@@ -84,7 +83,6 @@ export const UserProfileProvider: React.FC<{ children: ReactNode }> = ({
       } else {
         setProfile(null)
       }
-      
     } catch (error) {
       console.error('Error fetching profile:', error)
       setProfile(null)

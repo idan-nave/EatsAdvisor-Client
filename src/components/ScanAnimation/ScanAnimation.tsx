@@ -20,13 +20,21 @@ const ScanAnimation: React.FC = () => {
     const uploadFile = async () => {
       try {
         const data = await uploadMenu(file)
-        
-        console.log("data", data)
+
+        console.log('data', data)
 
         setTimeout(() => navigate(ROUTES.MENU_TABLE, { state: { data } }), 2000)
       } catch (err: unknown) {
-        const errorObj = err as { response?: { data?: { error?: string } } };
-        setError(errorObj.response?.data?.error || 'Failed to upload menu');
+        const errorObj = err as { response?: { data?: { error?: string } } }
+
+        setError(errorObj.response?.data?.error || 'Failed to upload menu')
+
+        if (
+          errorObj.response?.data?.error?.toLocaleLowerCase() ===
+          'the text is in another language'
+        ) {
+          setError('Please provide a menu written in English.')
+        }
       }
     }
 
@@ -43,14 +51,14 @@ const ScanAnimation: React.FC = () => {
       {!error && <div className="scan-line"></div>}
       {error && (
         <div className="upload-status error">
-          {error}
+          {error.charAt(0).toUpperCase() + error.slice(1)}
           <div
             className="go-back-home"
             onClick={() => {
               navigate(ROUTES.HOME)
             }}
           >
-            Try again
+            Try Again
           </div>
         </div>
       )}
